@@ -1,0 +1,22 @@
+[Unit]
+Description=Webhook listener application
+After=network.target
+
+[Service]
+# The process startup type
+Type=simple
+
+# User who runs the process
+User=root
+
+# The path to the application
+WorkingDirectory=<WD>
+
+# The command to start the application
+ExecStart=/bin/bash -lc 'bundle exec puma -C <WD>/puma.rb'
+
+# The restart behavior
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
